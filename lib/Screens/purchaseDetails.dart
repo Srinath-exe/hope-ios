@@ -99,7 +99,7 @@ class _PurchaseDetailsState extends State<PurchaseDetails> {
                                   BorderRadius.all(Radius.circular(15))),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,
-                            height: MediaQuery.of(context).size.height * 0.3,
+                           // height: MediaQuery.of(context).size.height * 0.3,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               color: Colors.white,

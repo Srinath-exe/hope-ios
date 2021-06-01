@@ -498,7 +498,7 @@ class _WalletPageState extends State<WalletPage> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.12,
+       // height: MediaQuery.of(context).size.height * 0.14,
         width: MediaQuery.of(context).size.width * 0.95,
         decoration: BoxDecoration(
           color: Color(0xffF2D4C9),
@@ -509,7 +509,7 @@ class _WalletPageState extends State<WalletPage> {
           children: [
             Container(
               padding: const EdgeInsets.all(6),
-              height: MediaQuery.of(context).size.height * 0.12,
+              //height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 0.9 * 0.7,
               child: Column(
                 children: [

@@ -72,7 +72,6 @@ class _ReferralPageState extends State<ReferralPage> {
                         children: [
                           Text(
                             'Refer a friend',
-                              textScaleFactor: 1,
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.w600,
@@ -84,7 +83,7 @@ class _ReferralPageState extends State<ReferralPage> {
                       // Row(
                       //   children: [
                       //     Text(
-                      //       '',
+                      //       'And you can both save 30 TZS ',
                       //       style: TextStyle(
                       //         fontSize: 20,
                       //         color: Colors.blue[700],
@@ -110,12 +109,12 @@ class _ReferralPageState extends State<ReferralPage> {
                       listTile(
                           numb: "2",
                           title: "Get Exclusive offers",
-                          subTitle: "By inviting your Friends "),
+                          subTitle: "By inviting your friends"),
                       SizedBox(height: 10),
                       listTile(
                           numb: "3",
-                          title: "Get Exciting Coupons",
-                          subTitle: "Redeem in your Next Purchase"),
+                          title: "Get exciting Coupons",
+                          subTitle: "Redeem in your next purchase"),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.10),
                       FutureBuilder(
@@ -128,17 +127,17 @@ class _ReferralPageState extends State<ReferralPage> {
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: Container(
+
                                       width: MediaQuery.of(context).size.width *
                                           0.95,
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.055,
+                                      MediaQuery.of(context).size.height *
+                                          0.065,
                                       child: TextFormField(
                                         showCursor: false,
                                         readOnly: true,
                                         initialValue:
-                                            '${profile.admReffercode}',
-                                            
+                                        '${profile.admReffercode}',
                                         decoration: InputDecoration(
                                           filled: true,
                                           fillColor: Colors.grey[50],
@@ -148,7 +147,7 @@ class _ReferralPageState extends State<ReferralPage> {
                                                   color: Colors.grey[500],
                                                   width: 2),
                                               borderRadius:
-                                                  const BorderRadius.all(
+                                              const BorderRadius.all(
                                                 const Radius.circular(15.0),
                                               )),
                                           focusedBorder: OutlineInputBorder(
@@ -156,31 +155,31 @@ class _ReferralPageState extends State<ReferralPage> {
                                                   color: Colors.blue[500],
                                                   width: 2),
                                               borderRadius:
-                                                  const BorderRadius.all(
+                                              const BorderRadius.all(
                                                 const Radius.circular(15.0),
                                               )),
                                           suffixIcon: Container(
                                             height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
+                                                .size
+                                                .height *
                                                 0.080,
                                             child: ElevatedButton(
                                                 style: ButtonStyle(
                                                   shape: MaterialStateProperty.all<
-                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder>(
                                                       RoundedRectangleBorder(
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0),
+                                                          BorderRadius
+                                                              .circular(
+                                                              15.0),
                                                           side: BorderSide(
                                                               color: Colors
                                                                   .transparent))),
                                                   backgroundColor:
-                                                      MaterialStateProperty
-                                                          .resolveWith<Color>(
-                                                    (Set<MaterialState>
-                                                        states) {
+                                                  MaterialStateProperty
+                                                      .resolveWith<Color>(
+                                                        (Set<MaterialState>
+                                                    states) {
                                                       if (states.contains(
                                                           MaterialState
                                                               .pressed))
@@ -190,21 +189,20 @@ class _ReferralPageState extends State<ReferralPage> {
                                                   ),
                                                 ),
                                                 onPressed: () {
-                                                  
+
                                                   Clipboard.setData(
-                                                          ClipboardData(
-                                                              text: '${profile.admReffercode}'))
+                                                      ClipboardData(
+                                                          text: '${profile.admReffercode}'))
                                                       .then((value) {
                                                     //only if ->
                                                     ScaffoldMessenger.of(
-                                                            context)
+                                                        context)
                                                         .showSnackBar(SnackBar(
-                                                            content: Text('Code Copied to clipboard')));
+                                                        content: Text('Code Copied to clipboard')));
                                                   });
                                                 },
                                                 child: Text(
                                                   'Copy',
-                                                    textScaleFactor: 1,
                                                   style: TextStyle(
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.bold,
@@ -221,22 +219,22 @@ class _ReferralPageState extends State<ReferralPage> {
                                       width: MediaQuery.of(context).size.width *
                                           0.4,
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.06,
+                                      MediaQuery.of(context).size.height *
+                                          0.06,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                           shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          30.0),
+                                                  BorderRadius.circular(
+                                                      30.0),
                                                   side: BorderSide(
                                                       color:
-                                                          Colors.transparent))),
+                                                      Colors.transparent))),
                                           backgroundColor: MaterialStateProperty
                                               .resolveWith<Color>(
-                                            (Set<MaterialState> states) {
+                                                (Set<MaterialState> states) {
                                               if (states.contains(
                                                   MaterialState.pressed))
                                                 return Colors.blue[600];
@@ -246,7 +244,6 @@ class _ReferralPageState extends State<ReferralPage> {
                                         ),
                                         child: Text(
                                           'Share',
-                                            textScaleFactor: 1,
                                           style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold,
@@ -292,15 +289,13 @@ class _ReferralPageState extends State<ReferralPage> {
                   color: Colors.white),
               child: Center(
                   child: Text('$numb',
-                    textScaleFactor: 1,
                       style: TextStyle(
                           fontSize: 23,
                           color: Colors.blue[900],
                           fontWeight: FontWeight.w600))))),
       title: Text('$title',
-        textScaleFactor: 1,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-      subtitle: Text('$subTitle',  textScaleFactor: 1, style: TextStyle(fontSize: 16)),
+      subtitle: Text('$subTitle', style: TextStyle(fontSize: 16)),
     );
   }
 }

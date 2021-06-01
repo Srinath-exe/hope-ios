@@ -103,7 +103,7 @@ class _ProductMainState extends State<ProductMain> {
               child: Row(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.23,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                         cacheExtent: 1000,
@@ -137,7 +137,7 @@ class _ProductMainState extends State<ProductMain> {
               child: Row(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.23,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                         cacheExtent: 1000,
@@ -171,7 +171,7 @@ class _ProductMainState extends State<ProductMain> {
               child: Row(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.23,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                         cacheExtent: 1000,
@@ -205,7 +205,7 @@ class _ProductMainState extends State<ProductMain> {
               child: Row(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.23,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                       cacheExtent: 1000,

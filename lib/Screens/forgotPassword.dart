@@ -17,17 +17,17 @@ class ForgotPasswordState extends State<ForgotPassword> {
 
   String phoneno;
   final _formKey = GlobalKey<FormState>();
-    PhoneNumber number = PhoneNumber(isoCode: 'TZ',dialCode: "+255");
+  PhoneNumber number = PhoneNumber(isoCode: 'TZ',dialCode: "+255");
   final TextEditingController controller = TextEditingController();
   String initialCountry = 'TZ';
-    bool isApiCallProcess = false;
+  bool isApiCallProcess = false;
   @override
   void initState() {
     _controller = ScrollController(initialScrollOffset: 15);
     super.initState();
   }
-  
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return ProgressHUD(
       child: _uiSetup(context),
@@ -100,8 +100,8 @@ class ForgotPasswordState extends State<ForgotPassword> {
                                 children: [
                                   SizedBox(
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.08),
+                                      MediaQuery.of(context).size.height *
+                                          0.08),
                                   Icon(Icons.lock_outline, size: 120)
                                 ],
                               ),
@@ -128,16 +128,15 @@ class ForgotPasswordState extends State<ForgotPassword> {
                         children: [
                           SizedBox(
                               height:
-                                  MediaQuery.of(context).size.height * 0.04),
-                          Text("Reset password",  textScaleFactor: 1,
-
+                              MediaQuery.of(context).size.height * 0.04),
+                          Text("Reset password",
+                              textScaleFactor: 1,
                               style: TextStyle(
                                   fontSize: 35, fontWeight: FontWeight.w600)),
                           SizedBox(
                               height:
-                                  MediaQuery.of(context).size.height * 0.02),
-                          Text("Forgot your password?",
-                            textScaleFactor: 1,
+                              MediaQuery.of(context).size.height * 0.02),
+                          Text("Forgot your password?", textScaleFactor: 1,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w600)),
                         ],
@@ -157,67 +156,66 @@ class ForgotPasswordState extends State<ForgotPassword> {
                               width: MediaQuery.of(context).size.width * 0.8,
                               child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SizedBox(
                                         height:
-                                            MediaQuery.of(context).size.height *
-                                                0.02),
-                                    Text("Enter your registered phone number",
-                                      textScaleFactor: 1,
+                                        MediaQuery.of(context).size.height *
+                                            0.02),
+                                    Text("Enter your registered phone number", textScaleFactor: 1,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w400)),
                                     SizedBox(
                                         height:
-                                            MediaQuery.of(context).size.height *
-                                                0.02),
+                                        MediaQuery.of(context).size.height *
+                                            0.02),
 
-                                        Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.07,
-                                        child: InternationalPhoneNumberInput(
-                                          
-                                          onInputChanged: (PhoneNumber number) {
-                                            setState(() {
-                                              print(number.phoneNumber
-                                                  .substring(1));
-                                              phoneno = number
-                                                  .phoneNumber
-                                                  .substring(1);
-                                                  print(phoneno);
-                                            });
-                                          },
-                                          onInputValidated: (bool value) {
-                                            print(value);
-                                          },
-                                          selectorConfig: SelectorConfig(
-                                            selectorType: PhoneInputSelectorType
-                                                .BOTTOM_SHEET,
-                                          ),
-                                          ignoreBlank: false,
-                                          autoValidateMode:
-                                              AutovalidateMode.disabled,
-                                          selectorTextStyle:
-                                              TextStyle(color: Colors.black),
-                                          initialValue: number,
-                                          textFieldController: controller,
-                                          formatInput: false,
-                                          keyboardType:
-                                              TextInputType.numberWithOptions(
-                                                  signed: true, decimal: true),
-                                          inputBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                            const Radius.circular(20.0),
-                                          )),
-                                          onSaved: (PhoneNumber number) {
-                                            print('On Saved: $number');
-                                          },
+                                    Container(
+                                      height:
+                                      MediaQuery.of(context).size.height *
+                                          0.08,
+                                      child: InternationalPhoneNumberInput(
+
+                                        onInputChanged: (PhoneNumber number) {
+                                          setState(() {
+                                            print(number.phoneNumber
+                                                .substring(1));
+                                            phoneno = number
+                                                .phoneNumber
+                                                .substring(1);
+                                            print(phoneno);
+                                          });
+                                        },
+                                        onInputValidated: (bool value) {
+                                          print(value);
+                                        },
+                                        selectorConfig: SelectorConfig(
+                                          selectorType: PhoneInputSelectorType
+                                              .BOTTOM_SHEET,
                                         ),
+                                        ignoreBlank: false,
+                                        autoValidateMode:
+                                        AutovalidateMode.disabled,
+                                        selectorTextStyle:
+                                        TextStyle(color: Colors.black),
+                                        initialValue: number,
+                                        textFieldController: controller,
+                                        formatInput: false,
+                                        keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: true, decimal: true),
+                                        inputBorder: OutlineInputBorder(
+                                            borderRadius:
+                                            const BorderRadius.all(
+                                              const Radius.circular(20.0),
+                                            )),
+                                        onSaved: (PhoneNumber number) {
+                                          print('On Saved: $number');
+                                        },
                                       ),
-         
+                                    ),
+
                                     // Padding(
                                     //   padding: const EdgeInsets.all(8.0),
                                     //   child: TextFormField(
@@ -250,32 +248,32 @@ class ForgotPasswordState extends State<ForgotPassword> {
                                     // ),
                                     SizedBox(
                                         height:
-                                            MediaQuery.of(context).size.height *
-                                                0.01),
+                                        MediaQuery.of(context).size.height *
+                                            0.01),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.4,
+                                        MediaQuery.of(context).size.width *
+                                            0.4,
                                         height:
-                                            MediaQuery.of(context).size.height *
-                                                0.06,
+                                        MediaQuery.of(context).size.height *
+                                            0.06,
                                         child: ElevatedButton(
                                           style: ButtonStyle(
                                             shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            50.0),
+                                                    BorderRadius.circular(
+                                                        50.0),
                                                     side: BorderSide(
                                                         color: Colors
                                                             .transparent))),
                                             backgroundColor:
-                                                MaterialStateProperty
-                                                    .resolveWith<Color>(
-                                              (Set<MaterialState> states) {
+                                            MaterialStateProperty
+                                                .resolveWith<Color>(
+                                                  (Set<MaterialState> states) {
                                                 if (states.contains(
                                                     MaterialState.pressed))
                                                   return Colors.orange[200];
@@ -284,8 +282,7 @@ class ForgotPasswordState extends State<ForgotPassword> {
                                             ),
                                           ),
                                           child: Text(
-                                            'Continue',
-                                              textScaleFactor: 1,
+                                            'Continue', textScaleFactor: 1,
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
@@ -297,17 +294,17 @@ class ForgotPasswordState extends State<ForgotPassword> {
                                                 isApiCallProcess = true;
                                               });
                                               ApiService apiService =
-                                                  new ApiService();
+                                              new ApiService();
                                               PostForgotPassword
-                                                  postForgotPassword =
-                                                  new PostForgotPassword(
-                                                      admMobile: phoneno);
+                                              postForgotPassword =
+                                              new PostForgotPassword(
+                                                  admMobile: phoneno);
                                               apiService
                                                   .forgotPassword(
-                                                      postForgotPassword)
+                                                  postForgotPassword)
                                                   .then((value) {
                                                 if (value != null) {
-                                                   setState(() {
+                                                  setState(() {
                                                     isApiCallProcess = false;
                                                   });
                                                   Navigator.push(
@@ -319,15 +316,15 @@ class ForgotPasswordState extends State<ForgotPassword> {
                                                                 responseForgotPassword: value,
                                                               )));
                                                 }else{
-                                                     AwesomeDialog(
+                                                  AwesomeDialog(
                                                     context: context,
                                                     dialogType:
-                                                        DialogType.WARNING,
+                                                    DialogType.WARNING,
                                                     animType:
-                                                        AnimType.BOTTOMSLIDE,
+                                                    AnimType.BOTTOMSLIDE,
                                                     title: 'Try later',
                                                     desc:
-                                                        'Unable to change Password',
+                                                    'Unable to change Password',
                                                     btnCancelOnPress: () {},
                                                     btnOkOnPress: () {},
                                                   )..show();
