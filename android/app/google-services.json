@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "764839469158",
+    "project_id": "hopepoints1",
+    "storage_bucket": "hopepoints1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764839469158:android:04d41e80f128d7d2854da7",
+        "android_client_info": {
+          "package_name": "com.hope.hopepoints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764839469158-32l6uk6aq35h30rt2u59rgopeonf3nsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIbid9hVyEpPHcaP013vGeuYP4FE2g0aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764839469158-32l6uk6aq35h30rt2u59rgopeonf3nsi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "764839469158-1kec4ovn7tj1omlku9ciuqr9r95vin6k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hopepoints.hopeapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
