@@ -120,7 +120,7 @@ class _PurchasesState extends State<Purchases> {
                         getPurchasesSelectAll: getPurchasesSelectAll)));
           },
           child: Container(
-              height: MediaQuery.of(context).size.height * 0.08,
+              height: MediaQuery.of(context).size.height * 0.10,
               width: MediaQuery.of(context).size.width * 0.95,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -151,7 +151,8 @@ class _PurchasesState extends State<Purchases> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.35,
+                              color: Colors.amber,
+                             width: MediaQuery.of(context).size.width * 0.40,
                               child: Column(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,

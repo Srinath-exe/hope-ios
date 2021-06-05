@@ -7,6 +7,7 @@ import 'package:hopepoints/Screens/homePage.dart';
 import 'package:hopepoints/Screens/login.dart';
 import 'package:hopepoints/utils/sharedPrefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:upgrader/upgrader.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
@@ -73,7 +74,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Hope Point',
       theme: ThemeData(),
-      home: widget.login == 'true' ? HomePage() : LoginPage(),
+      home:UpgradeAlert(
+            debugLogging: true,
+            dialogStyle: UpgradeDialogStyle.cupertino,
+          child: widget.login == 'true' ? HomePage() : LoginPage()
+      ),
+
     );
   }
 }

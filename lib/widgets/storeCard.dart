@@ -13,7 +13,15 @@ class StoreCard extends StatefulWidget {
 class _StorCcardState extends State<StoreCard> {
   @override
   Widget build(BuildContext context) {
-    String command="tel://${widget.storeDetail.strPhone}";
+
+    Future<void> customLaunch(command) async {
+      if (await canLaunch(command)) {
+        print("launched");
+        await launch(command);
+      } else {
+        print(' could not launch $command');
+      }
+    }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -150,13 +158,8 @@ class _StorCcardState extends State<StoreCard> {
                           padding: EdgeInsets.all(0),
 
                           onPressed: () {
-                            Future<void> customLaunch(command) async {
-                              if (await canLaunch(command)) {
-                                await launch(command);
-                              } else {
-                                print(' could not launch $command');
-                              }
-                            }
+                            String command="tel://${widget.storeDetail.strPhone}";
+                            customLaunch(command);
 
                           },
                           iconSize: 25,

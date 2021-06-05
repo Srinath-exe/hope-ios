@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   String initialCountry = 'TZ';
   @override
   void initState() {
-    _passwordVisible1 = false;
+    _passwordVisible1 = true;
     apiService = new ApiService();
     loginModel = new PostLogin();
     _controller = ScrollController(initialScrollOffset: 15);
@@ -247,6 +247,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: TextFormField(
+                                        keyboardType: TextInputType.visiblePassword,
                                         onChanged: (value) {
                                           setState(() {
                                             loginModel.pass = value;
