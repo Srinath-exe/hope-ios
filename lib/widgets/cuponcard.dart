@@ -101,14 +101,7 @@ class _CuponRedeemState extends State<CuponRedeem> {
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold)),
 
-                                //    TextSpan(
-                                //   text: ' Card\ncosts ',
-                                //  ),
-                                //    TextSpan(
-                                //   text: '${widget.coupon.cpnAmount}TZS', style:  TextStyle(
-                                //     fontSize:17,
-                                //     color: Colors.blue,
-                                //       fontWeight: FontWeight.bold)
+
                               ],
                             ),
                           )
@@ -117,7 +110,7 @@ class _CuponRedeemState extends State<CuponRedeem> {
                     ),
                     Container(
                       color: Colors.transparent,
-                      width: MediaQuery.of(context).size.width * 0.9 * 0.75,
+                      width: MediaQuery.of(context).size.width * 0.9 * 0.80,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -171,89 +164,100 @@ class _CuponRedeemState extends State<CuponRedeem> {
                                   ),
                                 ]),
                           ),
-                          Padding(
-                              padding: const EdgeInsets.all(0.0),
-                              child: widget.coupon.cpnStatus == 'Active'
-                                  ? Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.3,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
-                                      child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50.0),
-                                                    side: BorderSide(
-                                                        color: Colors
-                                                            .transparent))),
-                                            backgroundColor:
-                                                MaterialStateProperty
-                                                    .resolveWith<Color>(
-                                              (Set<MaterialState> states) {
-                                                if (states.contains(
-                                                    MaterialState.pressed))
-                                                  return Colors.blue[200];
-                                                return Colors.blue[500];
-                                              },
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: widget.coupon.cpnStatus == 'Active'
+                                      ? Container(
+                                          width: MediaQuery.of(context).size.width *
+                                              0.3,
+                                          height:
+                                              MediaQuery.of(context).size.height *
+                                                  0.05,
+                                          child: ElevatedButton(
+                                              style: ButtonStyle(
+                                                shape: MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                50.0),
+                                                        side: BorderSide(
+                                                            color: Colors
+                                                                .transparent))),
+                                                backgroundColor:
+                                                    MaterialStateProperty
+                                                        .resolveWith<Color>(
+                                                  (Set<MaterialState> states) {
+                                                    if (states.contains(
+                                                        MaterialState.pressed))
+                                                      return Colors.blue[200];
+                                                    return Colors.blue[500];
+                                                  },
+                                                ),
+                                              ),
+                                              child: Text(
+                                                'Redeem',
+                                                  textScaleFactor: 1,
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                setState(() {});
+                                              }),
+                                        )
+                                      : Container(
+                                          width: MediaQuery.of(context).size.width *
+                                              0.3,
+                                          height:
+                                              MediaQuery.of(context).size.height *
+                                                  0.05,
+                                          child: ElevatedButton(
+                                            style: ButtonStyle(
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      side: BorderSide(
+                                                          color: Colors.red))),
+                                              backgroundColor: MaterialStateProperty
+                                                  .resolveWith<Color>(
+                                                (Set<MaterialState> states) {
+                                                  if (states.contains(
+                                                      MaterialState.pressed))
+                                                    return Colors.red[400];
+                                                  return Colors.white;
+                                                },
+                                              ),
+                                            ),
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Redeemed',
+                                                textScaleFactor: 1,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.red,
+                                              ),
                                             ),
                                           ),
-                                          child: Text(
-                                            'Redeem',
-                                              textScaleFactor: 1,
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                            ),
-                                          ),
-                                          onPressed: () {
-                                            setState(() {});
-                                          }),
-                                    )
-                                  : Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.3,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
-                                      child: ElevatedButton(
-                                        style: ButtonStyle(
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                  side: BorderSide(
-                                                      color: Colors.red))),
-                                          backgroundColor: MaterialStateProperty
-                                              .resolveWith<Color>(
-                                            (Set<MaterialState> states) {
-                                              if (states.contains(
-                                                  MaterialState.pressed))
-                                                return Colors.red[400];
-                                              return Colors.white;
-                                            },
-                                          ),
-                                        ),
-                                        onPressed: () {},
-                                        child: Text(
-                                          'Redeemed',
-                                            textScaleFactor: 1,
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.red,
-                                          ),
-                                        ),
-                                      ),
-                                    ))
+                                        )),
+                              SizedBox(height: MediaQuery.of(context).size.width * 0.035),
+                              Text('* Terms and Conditons applied',style:TextStyle(fontSize:10, color: Colors.grey)),
+                            ],
+                          ),
+
                         ],
                       ),
-                    )
+                    ),
+
+
+                    
                   ],
                 )
               ],
