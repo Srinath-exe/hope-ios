@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -56,15 +55,21 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-   uuid = sharedPrefs.uuidtemp;
+    uuid = sharedPrefs.uuidtemp;
     apiService = new ApiService(token: token);
     super.initState();
   }
   Future<Null> onRefresh() async {
-      String fileName = "wallet.json";
-     var dir = await getTemporaryDirectory();
+    String fileName = "wallet.json";
+    var dir = await getTemporaryDirectory();
     File file = new File(dir.path + "/" + fileName);
     file.delete();
+    File file1 = new File(dir.path + "/" + "purchase$uuid.json");
+    file1.delete();
+
+    setState(() {
+      uuid = uuid;
+    });
 
   }
 
@@ -78,42 +83,42 @@ class _HomeState extends State<Home> {
       body:RefreshIndicator(
         displacement: 40,
         onRefresh:onRefresh ,
-              child: SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Container(
             child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Row(
                 children: [
                   Text('  Hope Point',
-                    textScaleFactor: 1,
+                      textScaleFactor: 1,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 ],
               ),
               Center(child: cupon()),
               Row(
                 children: [
                   Text('  Our Brands',
-                    textScaleFactor: 1,
+                      textScaleFactor: 1,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 ],
               ),
               carousel(),
               Row(
                 children: [
                   Text('  New Products',
-                    textScaleFactor: 1,
+                      textScaleFactor: 1,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 ],
               ),
               topDeals(),
               Row(
                 children: [
                   Text('  Top Offers',
-                    textScaleFactor: 1,
+                      textScaleFactor: 1,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 ],
               ),
               fas(),
@@ -149,20 +154,20 @@ class _HomeState extends State<Home> {
             List<GetBrandList> brandList = snapshot.data;
             return Container(
                 child: Column(children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        _currentIndex = index;
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      onPageChanged: (index, reason) {
+                        setState(
+                              () {
+                            _currentIndex = index;
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
-                items: brandList
-                    .map(
-                      (item) => Padding(
+                    ),
+                    items: brandList
+                        .map(
+                          (item) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
                           margin: EdgeInsets.only(
@@ -196,46 +201,46 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     )
-                    .toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: brandList.map((urlOfItem) {
-                  int index = brandList.indexOf(urlOfItem);
-                  return Container(
-                    width: 5.0,
-                    height: 5.0,
-                    margin:
+                        .toList(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: brandList.map((urlOfItem) {
+                      int index = brandList.indexOf(urlOfItem);
+                      return Container(
+                        width: 5.0,
+                        height: 5.0,
+                        margin:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _currentIndex == index
-                          ? Color.fromRGBO(0, 0, 0, 0.8)
-                          : Color.fromRGBO(0, 0, 0, 0.3),
-                    ),
-                  );
-                }).toList(),
-              )
-            ]));
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentIndex == index
+                              ? Color.fromRGBO(0, 0, 0, 0.8)
+                              : Color.fromRGBO(0, 0, 0, 0.3),
+                        ),
+                      );
+                    }).toList(),
+                  )
+                ]));
           } else {
             return Container(
                 child: Column(children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  // enlargeCenterPage: true,
-                  //scrollDirection: Axis.vertical,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        _currentIndex = index;
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      // enlargeCenterPage: true,
+                      //scrollDirection: Axis.vertical,
+                      onPageChanged: (index, reason) {
+                        setState(
+                              () {
+                            _currentIndex = index;
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
-                items: imagesList
-                    .map(
-                      (item) => Padding(
+                    ),
+                    items: imagesList
+                        .map(
+                          (item) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
                           margin: EdgeInsets.only(
@@ -260,27 +265,27 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     )
-                    .toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: imagesList.map((urlOfItem) {
-                  int index = imagesList.indexOf(urlOfItem);
-                  return Container(
-                    width: 5.0,
-                    height: 5.0,
-                    margin:
+                        .toList(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: imagesList.map((urlOfItem) {
+                      int index = imagesList.indexOf(urlOfItem);
+                      return Container(
+                        width: 5.0,
+                        height: 5.0,
+                        margin:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _currentIndex == index
-                          ? Color.fromRGBO(0, 0, 0, 0.8)
-                          : Color.fromRGBO(0, 0, 0, 0.3),
-                    ),
-                  );
-                }).toList(),
-              )
-            ]));
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentIndex == index
+                              ? Color.fromRGBO(0, 0, 0, 0.8)
+                              : Color.fromRGBO(0, 0, 0, 0.3),
+                        ),
+                      );
+                    }).toList(),
+                  )
+                ]));
           }
         });
   }
@@ -292,7 +297,7 @@ class _HomeState extends State<Home> {
           if (snapshot.hasData) {
             List<GetProductListAll> productlistall = snapshot.data;
             List<GetProductListAll> productlistall1 =
-                productlistall.where((e) => e.prdCustid == "New").toList();
+            productlistall.where((e) => e.prdCustid == "New").toList();
             return Container(
               width: MediaQuery.of(context).size.width,
               child: Row(
@@ -368,7 +373,7 @@ class _HomeState extends State<Home> {
                       highlightColor: Colors.white,
                       child: Container(
                           height:
-                              MediaQuery.of(context).size.height * 0.20 * 0.1,
+                          MediaQuery.of(context).size.height * 0.20 * 0.1,
                           width: MediaQuery.of(context).size.width * 0.35 * 0.6,
                           decoration: BoxDecoration(
                               color: Colors.red,
@@ -389,7 +394,7 @@ class _HomeState extends State<Home> {
         if (snapshot.hasData) {
           List<GetOffersList> offerLis = snapshot.data;
           List<GetOffersList> offerList =
-              offerLis.where((e) => e.ofrStatus == "1").toList();
+          offerLis.where((e) => e.ofrStatus == "1").toList();
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.3,
@@ -413,8 +418,8 @@ class _HomeState extends State<Home> {
     return Container(
       child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        emptyOffercard(),
-      ])),
+            emptyOffercard(),
+          ])),
     );
   }
 

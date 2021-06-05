@@ -52,70 +52,70 @@ class _WalletPageState extends State<WalletPage> {
       backgroundColor: Colors.white,
       body: Container(
           child: Column(
-        children: [
-          Row(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('   Account balance & History',
-                      textScaleFactor: 1,
-                      style:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('   Account balance & History',
+                          textScaleFactor: 1,
+                          style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                    ],
+                  ),
                 ],
               ),
-            ],
-          ),
-          balanceCard(),
-          referBanner(),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.005),
-          Container(
-              padding: EdgeInsets.all(5),
-              child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Recent Purchases',
-                          textScaleFactor: 1,
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Purchases()));
-                        });
-                      },
-                      child: Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                'View All',
-                                textScaleFactor: 1,
-                                style: TextStyle(color: Colors.yellow[900]),
-                              ),
-                              Icon(Icons.keyboard_arrow_right,
-                                  color: Colors.yellow[900])
-                            ],
+              balanceCard(),
+              referBanner(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+              Container(
+                  padding: EdgeInsets.all(5),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Recent Purchases',
+                              textScaleFactor: 1,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-                PurchaseWallet()
-              ]))
-        ],
-      )),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Purchases()));
+                            });
+                          },
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'View All',
+                                    textScaleFactor: 1,
+                                    style: TextStyle(color: Colors.yellow[900]),
+                                  ),
+                                  Icon(Icons.keyboard_arrow_right,
+                                      color: Colors.yellow[900])
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    PurchaseWallet()
+                  ]))
+            ],
+          )),
     );
   }
 
@@ -151,12 +151,12 @@ class _WalletPageState extends State<WalletPage> {
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(100))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.orange[300],
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
+                                    BorderRadius.all(Radius.circular(100))),
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.account_balance_wallet_outlined,
@@ -176,12 +176,13 @@ class _WalletPageState extends State<WalletPage> {
                                       padding: const EdgeInsets.all(4.0),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
+                                        MediaQuery.of(context).size.width *
+                                            0.3,
                                         child: Text(
                                           'Total TZS Balance',
                                           textScaleFactor: 1,
                                           style: TextStyle(
+                                              fontWeight: FontWeight.w500,
                                               fontSize: 12, color: Colors.grey),
                                         ),
                                       ),
@@ -196,7 +197,7 @@ class _WalletPageState extends State<WalletPage> {
                                       child: Text(
                                         '${getWalletDetail.amount??'0'} TZS',
                                         textScaleFactor: 1,
-                                        style: TextStyle(fontSize: 18),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                     ),
                                   ],
@@ -210,12 +211,12 @@ class _WalletPageState extends State<WalletPage> {
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(100))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.orange[300],
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
+                                    BorderRadius.all(Radius.circular(100))),
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.toll,
@@ -237,8 +238,8 @@ class _WalletPageState extends State<WalletPage> {
                                       padding: const EdgeInsets.all(4.0),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.2,
+                                        MediaQuery.of(context).size.width *
+                                            0.2,
                                         child: Text(
                                           'Total Points',
                                           textScaleFactor: 1,
@@ -276,9 +277,9 @@ class _WalletPageState extends State<WalletPage> {
                           GestureDetector(
                             onTap: (){
                               Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CuponsPage()));
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CuponsPage()));
                             },
                             child: Text(
                               "View Coupons",
@@ -323,12 +324,12 @@ class _WalletPageState extends State<WalletPage> {
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(100))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.orange[300],
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
+                                    BorderRadius.all(Radius.circular(100))),
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.account_balance_wallet_outlined,
@@ -348,8 +349,8 @@ class _WalletPageState extends State<WalletPage> {
                                       padding: const EdgeInsets.all(4.0),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
+                                        MediaQuery.of(context).size.width *
+                                            0.3,
                                         child: Text(
                                           'Total TZS Balance',
                                           textScaleFactor: 1,
@@ -372,12 +373,12 @@ class _WalletPageState extends State<WalletPage> {
                                             highlightColor: Colors.white,
                                             child: Container(
                                               width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
+                                                  .size
+                                                  .width *
                                                   0.2,
                                               height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
+                                                  .size
+                                                  .height *
                                                   0.02,
                                             ),
                                           )
@@ -395,12 +396,12 @@ class _WalletPageState extends State<WalletPage> {
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(100))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.orange[300],
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
+                                    BorderRadius.all(Radius.circular(100))),
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.toll,
@@ -422,8 +423,8 @@ class _WalletPageState extends State<WalletPage> {
                                       padding: const EdgeInsets.all(4.0),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.2,
+                                        MediaQuery.of(context).size.width *
+                                            0.2,
                                         child: Text(
                                           'Total Points',
                                           textScaleFactor: 1,
@@ -447,12 +448,12 @@ class _WalletPageState extends State<WalletPage> {
                                             child: Container(
                                               color: Colors.grey,
                                               width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
+                                                  .size
+                                                  .width *
                                                   0.15,
                                               height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
+                                                  .size
+                                                  .height *
                                                   0.02,
                                             ),
                                           )
@@ -498,7 +499,7 @@ class _WalletPageState extends State<WalletPage> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Container(
-       // height: MediaQuery.of(context).size.height * 0.14,
+        height: MediaQuery.of(context).size.height * 0.15,
         width: MediaQuery.of(context).size.width * 0.95,
         decoration: BoxDecoration(
           color: Color(0xffF2D4C9),
@@ -509,7 +510,7 @@ class _WalletPageState extends State<WalletPage> {
           children: [
             Container(
               padding: const EdgeInsets.all(6),
-              //height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 0.9 * 0.7,
               child: Column(
                 children: [
@@ -520,7 +521,7 @@ class _WalletPageState extends State<WalletPage> {
                         children: [
                           Text(
                             'Refer and Earn FREE Points',
-                              textScaleFactor: 1,
+                            textScaleFactor: 1,
                             style: TextStyle(
                                 color: Colors.pink[500],
                                 fontSize: 15,
@@ -535,10 +536,10 @@ class _WalletPageState extends State<WalletPage> {
                         children: [
                           Container(
                               width:
-                                  MediaQuery.of(context).size.width * 0.9 * 0.6,
+                              MediaQuery.of(context).size.width * 0.9 * 0.6,
                               child: Text(
                                   'Earn exiting rewards and free Points by inviting your friends to join Hope Point',
-                                    textScaleFactor: 1,
+                                  textScaleFactor: 1,
                                   style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.grey[600],
@@ -613,7 +614,7 @@ class _WalletPageState extends State<WalletPage> {
                         decoration: BoxDecoration(
                             color: Colors.orange[200],
                             borderRadius:
-                                BorderRadius.all(Radius.circular(100))),
+                            BorderRadius.all(Radius.circular(100))),
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.account_balance_wallet_outlined),
                       ),
@@ -649,7 +650,7 @@ class _WalletPageState extends State<WalletPage> {
                         decoration: BoxDecoration(
                             color: Colors.orange[200],
                             borderRadius:
-                                BorderRadius.all(Radius.circular(100))),
+                            BorderRadius.all(Radius.circular(100))),
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.toll, size: 25),
                       ),

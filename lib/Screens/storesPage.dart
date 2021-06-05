@@ -55,6 +55,7 @@ class _StoresState extends State<Stores> {
             print(snapshot);
             if (snapshot.hasData) {
               List<GetStoreListAll> storeList = snapshot.data;
+              storeList.sort((a, b) => a.strStorename.toString().compareTo(b.strStorename.toString()));
               return ListView.builder(
                   itemCount: storeList.length,
                   itemBuilder: (context, index) {
@@ -67,11 +68,11 @@ class _StoresState extends State<Stores> {
                 return Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.warning_sharp,color:Colors.yellow,size: 50),
-                    Text('Unable to get Store List'  ,textScaleFactor: 1,),
-                  ],
-                ));
+                      children: [
+                        Icon(Icons.warning_sharp,color:Colors.yellow,size: 50),
+                        Text('Unable to get Store List'  ,textScaleFactor: 1,),
+                      ],
+                    ));
               }
               return Center(child: CircularProgressIndicator());
             }
@@ -132,20 +133,20 @@ class _StoresState extends State<Stores> {
       child: Material(
         child: Column(
             children: cityList.map((e) {
-          return Container(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Text(
-                  e,
-                    textScaleFactor: 1,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ));
-        }).toList()),
+              return Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          e,
+                          textScaleFactor: 1,
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ));
+            }).toList()),
       ),
     );
   }

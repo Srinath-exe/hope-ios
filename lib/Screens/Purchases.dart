@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hopepoints/Model/PurchaseSelectAll.dart';
 import 'package:hopepoints/Screens/purchaseDetails.dart';
 import 'package:hopepoints/services/apiService.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -34,42 +37,58 @@ class _PurchasesState extends State<Purchases> {
     gettokenAndUuid();
     super.initState();
   }
+  Future<Null> onRefresh() async {
+    String fileName = "wallet.json";
+    var dir = await getTemporaryDirectory();
+    File file = new File(dir.path + "/" + fileName);
+    file.delete();
+    File file1 = new File(dir.path + "/" + "purchase$uuid.json");
+    file1.delete();
+    setState(() {
+      uuid = uuid;
+    });
 
+  }
   @override
   Widget build(BuildContext context) {
-     apiService = new ApiService(token: token);
+    apiService = new ApiService(token: token);
     return Scaffold(
       backgroundColor: Colors.white,
-         appBar: AppBar(
-          title: Text(
-            'Purchase History',
-              textScaleFactor: 1,
-            style: TextStyle(
-       
-              color: Colors.black,
-            ),
-          ),
-          backgroundColor: Colors.white,
-          elevation: 0,
-          iconTheme: IconThemeData(
+      appBar: AppBar(
+        title: Text(
+          'Purchase History',
+          textScaleFactor: 1,
+          style: TextStyle(
+
             color: Colors.black,
           ),
         ),
-        body:   Padding(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
+      body:   RefreshIndicator(
+        displacement: 40,
+        onRefresh:onRefresh ,
+        child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: purchase(),
         ),
-        
+      ),
+
 
     );
   }
-    Widget purchase() {
+  Widget purchase() {
     return FutureBuilder(
         future: apiService.getPurchasesSelectAll(uuid),
         builder: (context, snapshot) {
+          print('getPurchasesSelectAll building');
           if (snapshot.hasData) {
             List<GetPurchasesSelectAll> purchasesSelectAll = snapshot.requireData;
-          
+
             return ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -79,8 +98,8 @@ class _PurchasesState extends State<Purchases> {
               },
             );
           } else {
-            return 
-            nullPurchase();
+            return
+              nullPurchase();
           }
         });
   }
@@ -120,13 +139,13 @@ class _PurchasesState extends State<Purchases> {
                               decoration: BoxDecoration(
                                   color: Colors.blue[100],
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(100))),
                               padding: const EdgeInsets.all(8.0),
                               child: (true)
                                   ? Icon(Icons.shopping_bag,
-                                      color: Colors.blue[300])
+                                  color: Colors.blue[300])
                                   : Icon(Icons.restaurant,
-                                      color: Colors.blue[300]),
+                                  color: Colors.blue[300]),
                             ),
                           ),
                           Padding(
@@ -135,7 +154,7 @@ class _PurchasesState extends State<Purchases> {
                               width: MediaQuery.of(context).size.width * 0.35,
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Row(
                                     children: [
@@ -208,11 +227,11 @@ class _PurchasesState extends State<Purchases> {
     return SingleChildScrollView(
         child: Center(
           child: Container(
-      child: Column(children: [
-          purchaselaod(),
-          purchaselaod(),
-      ]),
-    ),
+            child: Column(children: [
+              purchaselaod(),
+              purchaselaod(),
+            ]),
+          ),
         ));
   }
 
