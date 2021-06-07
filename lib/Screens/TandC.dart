@@ -103,13 +103,16 @@ class _TnCState extends State<TnC> {
               padding: const EdgeInsets.all(3.0),
               child: Row(
                 children: [
-                  Text(
-                    "$index. ${tncElement.subject}",
-                      textScaleFactor: 1,
-                    style:GoogleFonts.montserrat(textStyle:TextStyle(
-                        color: Color(0xffe3650b),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,),)
+                  Container(
+                    width:MediaQuery.of(context).size.width*0.8,
+                    child: Text(
+                      "$index. ${tncElement.subject}",
+                        textScaleFactor: 1,
+                      style:GoogleFonts.montserrat(textStyle:TextStyle(
+                          color: Color(0xffe3650b),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,),)
+                    ),
                   ),
                 ],
               ),

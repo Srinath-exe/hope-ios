@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hopepoints/Model/StoreListAll.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 class StoreCard extends StatefulWidget {
   GetStoreListAll storeDetail;
   StoreCard({this.storeDetail});
@@ -11,17 +12,19 @@ class StoreCard extends StatefulWidget {
 }
 
 class _StorCcardState extends State<StoreCard> {
+
   @override
   Widget build(BuildContext context) {
 
-    Future<void> customLaunch(command) async {
-      if (await canLaunch(command)) {
-        print("launched");
-        await launch(command);
-      } else {
-        print(' could not launch $command');
-      }
-    }
+    // Future<void> customLaunch(command) async {
+    //   if (await canLaunch(command)) {
+    //     print("launched");
+    //     await launch(command);
+    //   } else {
+    //     print(' could not launch $command');
+    //   }
+    // }
+    String command="tel://${widget.storeDetail.strPhone}";
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -158,8 +161,9 @@ class _StorCcardState extends State<StoreCard> {
                           padding: EdgeInsets.all(0),
 
                           onPressed: () {
-                            String command="tel://${widget.storeDetail.strPhone}";
-                            customLaunch(command);
+                                                _launchURL("tel:+${widget.storeDetail.strPhone}");
+                            // _launchURL("tel:+${widget.storeDetail.strPhone}");
+                          //  customLaunch(command);
 
                           },
                           iconSize: 25,
@@ -184,6 +188,7 @@ class _StorCcardState extends State<StoreCard> {
                         IconButton(
                           padding: EdgeInsets.all(0),
                           onPressed: () {
+                            _launchURL("mailto:${widget.storeDetail.strEmail}");
                             launch("mailto:${widget.storeDetail.strEmail}");
                           },
                           iconSize: 25,
@@ -212,4 +217,8 @@ class _StorCcardState extends State<StoreCard> {
       ),
     );
   }
+
+  void _launchURL(String url) async =>
+      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
 }
