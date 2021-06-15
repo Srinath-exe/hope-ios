@@ -14,6 +14,7 @@ import 'package:hopepoints/Model/StoreListAll.dart';
 import 'package:hopepoints/Model/WalletModel.dart';
 import 'package:hopepoints/Model/postvalidateOtp.dart';
 import 'package:hopepoints/Model/productDetails.dart';
+import 'package:hopepoints/Model/productTags.dart';
 import 'package:hopepoints/Model/profile_model.dart';
 import 'package:hopepoints/Model/register_model.dart';
 import 'package:hopepoints/Model/tnc_mode.dart';
@@ -540,6 +541,35 @@ class ApiService {
         } catch (e) {
           return null;
         }
+      } else
+        return null;
+    }
+  }
+  Future<List<ProductTags>> getProductCtg() async {
+    String fileName = "productCtg.json";
+    var dir = await getTemporaryDirectory();
+    File file = new File(dir.path + "/" + fileName);
+    if (file.existsSync()) {
+      log(" Product Ctg type : local");
+      var jsonData = file.readAsStringSync();
+      List<ProductTags> getproducttags =
+      productTagsFromJson(jsonData);
+      return getproducttags;
+    } else {
+      log(" Product Ctg type : api");
+      var url = Uri.parse(baseUrl + "/system_productsTags");
+      var response = await http.get(url, headers: {
+        HttpHeaders.authorizationHeader: 'Basic ${gettoken()}',
+      });
+      log('product Ctg List response status: ${response.statusCode}');
+      log('Produc Ctg List response body: ${response.body}');
+      if (response.statusCode == 201) {
+        List<ProductTags> getproducttags =
+        productTagsFromJson(response.body);
+        file.writeAsStringSync(response.body,
+            flush: true, mode: FileMode.write);
+        log('Produc Ctg List response body: ${getproducttags}');
+        return getproducttags;
       } else
         return null;
     }

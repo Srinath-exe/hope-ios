@@ -248,7 +248,7 @@ class _CuponRedeemState extends State<CuponRedeem> {
                                           ),
                                         )),
                               SizedBox(height: MediaQuery.of(context).size.width * 0.035),
-                              Text('* Terms and Conditons applied',style:TextStyle(fontSize:10, color: Colors.grey)),
+                              Text('* Terms and Conditons Applies',style:TextStyle(fontSize:10, color: Colors.grey)),
                             ],
                           ),
 

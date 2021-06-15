@@ -84,7 +84,49 @@ class _CuponsPageState extends State<CuponsPage> {
                   ),
                 );
               } else {
-                return nullCoupon();
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Container(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/noCoupons.png"))),
+                          ),
+                          Text(
+                            "No coupons found",
+                            textScaleFactor: 1,
+                            style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            child: Text(
+                              "Usually when you are making your payment you can use the coupon,Our cashier will calculate discount and give you a reduced check-out cost depending on the offer that coupon is for.",
+                              textScaleFactor: 1,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+
+                                color: Colors.orange[500],
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height:5),
+
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
               }
             }),
       ),

@@ -72,7 +72,10 @@ class _NotificationPageState extends State<NotificationPage> {
                         child: ListView.builder(
                             itemCount: notificationuserwise.length,
                             itemBuilder: (context, index) {
-                              return notify(notificationuserwise[index]);
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: notify(notificationuserwise[index]),
+                              );
                             }),
                       );
                     } else {
@@ -134,6 +137,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
+                      width:MediaQuery.of(context).size.width*0.9,
                           child: Text(
                             getNotificationUserWise.msgSubject,
                               textScaleFactor: 1,

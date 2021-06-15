@@ -152,67 +152,67 @@ class _StorCcardState extends State<StoreCard> {
                         )
                       ]),
                 ),
-                Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Column(
-                      children: [
-                        IconButton(
-                          padding: EdgeInsets.all(0),
-
-                          onPressed: () {
-                                                _launchURL("tel:+${widget.storeDetail.strPhone}");
-                            // _launchURL("tel:+${widget.storeDetail.strPhone}");
-                          //  customLaunch(command);
-
-                          },
-                          iconSize: 25,
-                          icon: ShaderMask(
-                            shaderCallback: (Rect bounds) {
-                              return RadialGradient(
-                                center: Alignment.topLeft,
-                                radius: 0.5,
-                                colors: <Color>[
-                                  Colors.orange[200],
-                                  Colors.yellow[200]
-                                ],
-                                tileMode: TileMode.repeated,
-                              ).createShader(bounds);
-                            },
-                            child: Icon(
-                              Icons.call,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          padding: EdgeInsets.all(0),
-                          onPressed: () {
-                            _launchURL("mailto:${widget.storeDetail.strEmail}");
-                            launch("mailto:${widget.storeDetail.strEmail}");
-                          },
-                          iconSize: 25,
-                          icon: ShaderMask(
-                            shaderCallback: (Rect bounds) {
-                              return RadialGradient(
-                                center: Alignment.topLeft,
-                                radius: 0.5,
-                                colors: <Color>[
-                                  Colors.orange[200],
-                                  Colors.yellow[200]
-                                ],
-                                tileMode: TileMode.repeated,
-                              ).createShader(bounds);
-                            },
-                            child: Icon(
-                              Icons.email,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
-              ],
+              //   Positioned(
+              //       top: 0,
+              //       right: 0,
+              //       child: Column(
+              //         children: [
+              //           IconButton(
+              //             padding: EdgeInsets.all(0),
+              //
+              //             onPressed: () {
+              //                                   _launchURL("tel:+${widget.storeDetail.strPhone}");
+              //               // _launchURL("tel:+${widget.storeDetail.strPhone}");
+              //             //  customLaunch(command);
+              //
+              //             },
+              //             iconSize: 25,
+              //             icon: ShaderMask(
+              //               shaderCallback: (Rect bounds) {
+              //                 return RadialGradient(
+              //                   center: Alignment.topLeft,
+              //                   radius: 0.5,
+              //                   colors: <Color>[
+              //                     Colors.orange[200],
+              //                     Colors.yellow[200]
+              //                   ],
+              //                   tileMode: TileMode.repeated,
+              //                 ).createShader(bounds);
+              //               },
+              //               child: Icon(
+              //                 Icons.call,
+              //                 color: Colors.orange,
+              //               ),
+              //             ),
+              //           ),
+              //           IconButton(
+              //             padding: EdgeInsets.all(0),
+              //             onPressed: () {
+              //               _launchURL("mailto:${widget.storeDetail.strEmail}");
+              //               launch("mailto:${widget.storeDetail.strEmail}");
+              //             },
+              //             iconSize: 25,
+              //             icon: ShaderMask(
+              //               shaderCallback: (Rect bounds) {
+              //                 return RadialGradient(
+              //                   center: Alignment.topLeft,
+              //                   radius: 0.5,
+              //                   colors: <Color>[
+              //                     Colors.orange[200],
+              //                     Colors.yellow[200]
+              //                   ],
+              //                   tileMode: TileMode.repeated,
+              //                 ).createShader(bounds);
+              //               },
+              //               child: Icon(
+              //                 Icons.email,
+              //                 color: Colors.orange,
+              //               ),
+              //             ),
+              //           ),
+              //         ],
+              //       )),
+               ],
             )),
       ),
     );

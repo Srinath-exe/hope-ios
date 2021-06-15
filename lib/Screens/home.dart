@@ -60,17 +60,26 @@ class _HomeState extends State<Home> {
     super.initState();
   }
   Future<Null> onRefresh() async {
-    String fileName = "wallet.json";
-    var dir = await getTemporaryDirectory();
-    File file = new File(dir.path + "/" + fileName);
-    file.delete();
-    File file1 = new File(dir.path + "/" + "purchase$uuid.json");
-    file1.delete();
+    try {
+      String fileName = "wallet.json";
+      var dir = await getTemporaryDirectory();
 
-    setState(() {
-      uuid = uuid;
-    });
+      File file = new File(dir.path + "/" + fileName);
+      file.delete();
+      File file1 = new File(dir.path + "/" + "purchase$uuid.json");
+      file1.delete();
+      File file2 = new File(dir.path + "/" + "productData.json");
+      file2.delete();
+      dir.deleteSync(recursive: true);
 
+      setState(() {
+        uuid = uuid;
+      });
+    } catch (e) {
+      setState(() {
+        uuid = uuid;
+      });
+    }
   }
 
   @override

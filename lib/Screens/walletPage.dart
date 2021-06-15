@@ -275,21 +275,32 @@ class _WalletPageState extends State<WalletPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => CuponsPage()));
                             },
-                            child: Text(
-                              "View Coupons",
-                              textScaleFactor: 1,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                            child: Container(
+                              color: Colors.blue[200],
+                              height:
+                              MediaQuery.of(context).size.height * 0.14 * 0.35,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "View Coupons",
+                                    textScaleFactor: 1,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

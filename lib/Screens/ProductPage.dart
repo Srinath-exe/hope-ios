@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hopepoints/Model/ProductlistAll.dart';
+import 'package:hopepoints/Model/productTags.dart';
 import 'package:hopepoints/services/apiService.dart';
 import 'package:hopepoints/widgets/productCard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,296 +28,111 @@ class _ProductMainState extends State<ProductMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            topDeals(),
-            fashion(),
-            footwears(),
-            cosmetics(),
-            papaRoti(),
-            // Row(
-            //   children: [
-            //     Text('  Pappa Roti',
-            //         style:
-            //             TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-            //   ],
-            // ),
-            // pappaRoti(),
-          ]),
-        ),
-      ),
+      body: Container(
+          child: FutureBuilder(
+              future: apiService.productlistall(),
+              builder: (context, snapshot1) {
+                if (snapshot1.hasData) {
+                  List<GetProductListAll> productlistall = snapshot1.data;
+                  if (productlistall.length != 0) {
+                    return FutureBuilder(
+                        future: apiService.getProductCtg(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            List<ProductTags> productTags = snapshot.data;
+                            return Container(
+                                height:
+                                MediaQuery.of(context).size.height * 0.95,
+                                child: ListView.builder(
+                                    itemCount: productTags.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(vertical:5.0),
+                                        child: productRow(
+                                            productTags[index].prdCustid,
+                                            productlistall
+                                                .where((e) =>
+                                            e.prdCustid ==
+                                                "${productTags[index].prdCustid}")
+                                                .toList()),
+                                      );
+                                    }));
+                          } else {
+                            return Container(
+                                height:
+                                MediaQuery.of(context).size.height * 0.95,
+                                child: Column(
+                                  children: [
+                                    nullProduct(),
+                                    nullProduct(),
+                                    nullProduct(),
+                                  ],
+                                ));
+                          }
+                        });
+                  } else {
+                    return Container(
+                        height: MediaQuery.of(context).size.height * 0.95,
+                        child: Column(
+                          children: [
+                            nullProduct(),
+                            nullProduct(),
+                            nullProduct(),
+                          ],
+                        ));
+                  }
+                } else {
+                  return Container(
+                      height: MediaQuery.of(context).size.height * 0.95,
+                      child: Column(
+                        children: [
+                          nullProduct(),
+                          nullProduct(),
+                          nullProduct(),
+                        ],
+                      ));
+                }
+              })),
     );
   }
 
-  Widget topDeals() {
-    return FutureBuilder(
-        future: apiService.productlistall(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<GetProductListAll> productlistall = snapshot.data;
-            List<GetProductListAll> productlistall1 =
-            productlistall.where((e) => e.prdCustid == "New").toList();
-            if (productlistall1.length != 0) {
-              return Container(
+  Widget productRow(String title, List<GetProductListAll> productList) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(' $title',
+                    textScaleFactor: 1,
+                    style:
+                    TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.26,
                 width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('  New Products',
-                            textScaleFactor: 1,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.26,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            cacheExtent: 1000,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productlistall1.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                  product: productlistall1[index],
-                                  token: token,
-                                  uuid: uuid);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                child: ListView.builder(
+                  cacheExtent: 1000,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: productList.length,
+                  itemBuilder: (context, index) {
+                    return ProductCard(
+                        product: productList[index], token: token, uuid: uuid);
+                  },
                 ),
-              );
-            } else {
-              return Container();
-            }
-          } else {
-            return nullProduct();
-          }
-        });
-  }
-
-  Widget fashion() {
-    return FutureBuilder(
-        future: apiService.productlistall(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<GetProductListAll> productlistall = snapshot.data;
-            List<GetProductListAll> productlistall1 =
-            productlistall.where((e) => e.prdCustid == "Fashion").toList();
-            if (productlistall1.length != 0) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('  Fashion & Clothing',
-                            textScaleFactor: 1,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.26,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            cacheExtent: 1000,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productlistall1.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                  product: productlistall1[index],
-                                  token: token,
-                                  uuid: uuid);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return Container();
-            }
-          } else {
-            return nullProduct();
-          }
-        });
-  }
-
-  Widget footwears() {
-    return FutureBuilder(
-        future: apiService.productlistall(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<GetProductListAll> productlistall = snapshot.data;
-            List<GetProductListAll> productlistall1 =
-            productlistall.where((e) => e.prdCustid == "Footwear").toList();
-            if (productlistall1.length != 0) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('  Footwears',
-                            textScaleFactor: 1,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.26,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            cacheExtent: 1000,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productlistall1.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                  product: productlistall1[index],
-                                  token: token,
-                                  uuid: uuid);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return Container();
-            }
-          } else {
-            return nullProduct();
-          }
-        });
-  }
-
-  Widget cosmetics() {
-    return FutureBuilder(
-        future: apiService.productlistall(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<GetProductListAll> productlistall = snapshot.data;
-            List<GetProductListAll> productlistall1 = productlistall
-                .where((e) => e.prdCustid == "Cosmetics")
-                .toList();
-            log("prd ${productlistall1.length}");
-            if (productlistall1.length != 0) {
-              log("prsd $productlistall1");
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('  Cosmetics & Bodycare',
-                            textScaleFactor: 1,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.26,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            cacheExtent: 1000,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productlistall1.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                  product: productlistall1[index],
-                                  token: token,
-                                  uuid: uuid);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return Container();
-            }
-          } else {
-            return nullProduct();
-          }
-        });
-  }
-
-  Widget papaRoti() {
-    return FutureBuilder(
-        future: apiService.productlistall(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<GetProductListAll> productlistall = snapshot.data;
-            List<GetProductListAll> productlistall1 =
-            productlistall.where((e) => e.prdCustid == "PapaRoti").toList();
-            log("prd ${productlistall1.length}");
-            if (productlistall1.length != 0) {
-              log("prsd $productlistall1");
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('Pappa Roti',
-                            textScaleFactor: 1,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.26,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            cacheExtent: 1000,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productlistall1.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                  product: productlistall1[index],
-                                  token: token,
-                                  uuid: uuid);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return Container();
-            }
-          } else {
-            return nullProduct();
-          }
-        });
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget nullProduct() {
