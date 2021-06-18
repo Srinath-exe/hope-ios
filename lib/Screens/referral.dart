@@ -69,16 +69,16 @@ class _ReferralState extends State<Referral> {
                   child: Text('Got a referral code?',
                     textScaleFactor: 1,
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w800)),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
                 ),
                 Text('Enter your referral code ',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
                 Text('and get upto 500 points',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
                 SizedBox(height: 30),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.75,
@@ -120,7 +120,7 @@ class _ReferralState extends State<Referral> {
                         '-OR-',
                           textScaleFactor: 1,
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 14, fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -255,7 +255,7 @@ class _ReferralState extends State<Referral> {
                           'Skip',
                             textScaleFactor: 1,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange,
                           ),
@@ -356,7 +356,7 @@ class _ReferralState extends State<Referral> {
                           'Redeem',
                             textScaleFactor: 1,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -369,19 +369,19 @@ class _ReferralState extends State<Referral> {
                 Text('Invite your friends and get',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.w800)),
+                        TextStyle(fontSize: 21, fontWeight: FontWeight.w800)),
                 Text('bonus points!',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.w800)),
+                        TextStyle(fontSize: 21, fontWeight: FontWeight.w800)),
                 Text('Welcome to Hope,invite your friends  ',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
                 Text('with your code and get exciting bonus points',
                   textScaleFactor: 1,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
                 SizedBox(height: 30),
                 // Container(
                 //   width: MediaQuery.of(context).size.width * 0.5,
