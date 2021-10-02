@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>764839469158-2o87c2hbguj8iqrafp9orp4e7b13b98o.apps.googleusercontent.com</string>
+	<string>17284605840-mkuuro6j57gc843rohko07uqbr7flelk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.764839469158-2o87c2hbguj8iqrafp9orp4e7b13b98o</string>
+	<string>com.googleusercontent.apps.17284605840-mkuuro6j57gc843rohko07uqbr7flelk</string>
 	<key>API_KEY</key>
-	<string>AIzaSyANtIgeDF13ar_20Jy1D0X4v7uMZR8HF_Y</string>
+	<string>AIzaSyC4hGfTmt7udguAYPDnCf6dOyy8V2cMQK0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>764839469158</string>
+	<string>17284605840</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.hopepoint.hopeapp</string>
 	<key>PROJECT_ID</key>
-	<string>hopepoints1</string>
+	<string>hope-point-c11d6</string>
 	<key>STORAGE_BUCKET</key>
-	<string>hopepoints1.appspot.com</string>
+	<string>hope-point-c11d6.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:764839469158:ios:81e94975cb79133c854da7</string>
+	<string>1:17284605840:ios:3f589623b34803bdc07515</string>
 </dict>
 </plist>

@@ -19,6 +19,7 @@ import 'package:hopepoints/widgets/productCard.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final List<String> imagesList = [
   'http://www.hopeholding.co.tz/img/banner/b3.jpg',
@@ -155,6 +156,149 @@ class _HomeState extends State<Home> {
             }));
   }
 
+  // Widget carousel() {
+  //   return FutureBuilder(
+  //       future: apiService.brandlist(),
+  //       builder: (context, snapshot) {
+  //         if (snapshot.hasData) {
+  //           List<GetBrandList> brandList = snapshot.data;
+  //           return Container(
+  //               child: Column(children: [
+  //                 CarouselSlider(
+  //                   options: CarouselOptions(
+  //                     autoPlay: true,
+  //                     onPageChanged: (index, reason) {
+  //                       setState(
+  //                             () {
+  //                           _currentIndex = index;
+  //                         },
+  //                       );
+  //                     },
+  //                   ),
+  //                   items: brandList
+  //                       .map(
+  //                         (item) => Padding(
+  //                       padding: const EdgeInsets.all(8.0),
+  //                       child: Card(
+  //                         margin: EdgeInsets.only(
+  //                           top: 1.0,
+  //                           bottom: 1.0,
+  //                         ),
+  //                         elevation: 6.0,
+  //                         shadowColor: Colors.orangeAccent,
+  //                         shape: RoundedRectangleBorder(
+  //                           borderRadius: BorderRadius.circular(30.0),
+  //                         ),
+  //                         child: ClipRRect(
+  //                           borderRadius: BorderRadius.all(
+  //                             Radius.circular(30.0),
+  //                           ),
+  //                           child: CachedNetworkImage(
+  //                             width: double.infinity,
+  //                             fit: BoxFit.contain,
+  //                             imageUrl: "${imgpath + item.brdLogo}",
+  //                             placeholder: (context, url) => Container(),
+  //                             errorWidget: (contexe, url, error) =>
+  //                                 Icon(Icons.error),
+  //                           ),
+  //
+  //                           //  Image.network(
+  //                           //  imgpath+item.brdLogo,
+  //                           //   fit: BoxFit.contain,
+  //                           //   width: double.infinity,
+  //                           // ),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   )
+  //                       .toList(),
+  //                 ),
+  //                 Row(
+  //                   mainAxisAlignment: MainAxisAlignment.center,
+  //                   children: brandList.map((urlOfItem) {
+  //                     int index = brandList.indexOf(urlOfItem);
+  //                     return Container(
+  //                       width: 5.0,
+  //                       height: 5.0,
+  //                       margin:
+  //                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+  //                       decoration: BoxDecoration(
+  //                         shape: BoxShape.circle,
+  //                         color: _currentIndex == index
+  //                             ? Color.fromRGBO(0, 0, 0, 0.8)
+  //                             : Color.fromRGBO(0, 0, 0, 0.3),
+  //                       ),
+  //                     );
+  //                   }).toList(),
+  //                 )
+  //               ]));
+  //         } else {
+  //           return Container(
+  //               child: Column(children: [
+  //                 CarouselSlider(
+  //                   options: CarouselOptions(
+  //                     autoPlay: true,
+  //                     // enlargeCenterPage: true,
+  //                     //scrollDirection: Axis.vertical,
+  //                     onPageChanged: (index, reason) {
+  //                       setState(
+  //                             () {
+  //                           _currentIndex = index;
+  //                         },
+  //                       );
+  //                     },
+  //                   ),
+  //                   items: imagesList
+  //                       .map(
+  //                         (item) => Padding(
+  //                       padding: const EdgeInsets.all(8.0),
+  //                       child: Card(
+  //                         margin: EdgeInsets.only(
+  //                           top: 1.0,
+  //                           bottom: 1.0,
+  //                         ),
+  //                         elevation: 6.0,
+  //                         shadowColor: Colors.orangeAccent,
+  //                         shape: RoundedRectangleBorder(
+  //                           borderRadius: BorderRadius.circular(30.0),
+  //                         ),
+  //                         child: ClipRRect(
+  //                           borderRadius: BorderRadius.all(
+  //                             Radius.circular(30.0),
+  //                           ),
+  //                           child: Image.network(
+  //                             '',
+  //                             fit: BoxFit.fitHeight,
+  //                             width: double.infinity,
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   )
+  //                       .toList(),
+  //                 ),
+  //                 Row(
+  //                   mainAxisAlignment: MainAxisAlignment.center,
+  //                   children: imagesList.map((urlOfItem) {
+  //                     int index = imagesList.indexOf(urlOfItem);
+  //                     return Container(
+  //                       width: 5.0,
+  //                       height: 5.0,
+  //                       margin:
+  //                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+  //                       decoration: BoxDecoration(
+  //                         shape: BoxShape.circle,
+  //                         color: _currentIndex == index
+  //                             ? Color.fromRGBO(0, 0, 0, 0.8)
+  //                             : Color.fromRGBO(0, 0, 0, 0.3),
+  //                       ),
+  //                     );
+  //                   }).toList(),
+  //                 )
+  //               ]));
+  //         }
+  //       });
+  // }
   Widget carousel() {
     return FutureBuilder(
         future: apiService.brandlist(),
@@ -188,24 +332,38 @@ class _HomeState extends State<Home> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30.0),
-                            ),
-                            child: CachedNetworkImage(
-                              width: double.infinity,
-                              fit: BoxFit.contain,
-                              imageUrl: "${imgpath + item.brdLogo}",
-                              placeholder: (context, url) => Container(),
-                              errorWidget: (contexe, url, error) =>
-                                  Icon(Icons.error),
-                            ),
+                          clipBehavior: Clip.hardEdge,
+                          child: Material(
+                            color: Colors.white,
+                            child: InkWell(
+                              focusColor: Colors.white,
+                              highlightColor: Colors.white,
+                              splashColor: Colors.yellow[800].withOpacity(0.9),
+                              onTap: ()async{
+                                await canLaunch(item.instalink) ? await launch(item.instalink) : throw 'Could not launch ${item.instalink}';
+                              },
+                              child: Ink(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30.0),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    width: double.infinity,
+                                    fit: BoxFit.contain,
+                                    imageUrl: "${imgpath + item.brdLogo}",
+                                    placeholder: (context, url) => Container(),
+                                    errorWidget: (contexe, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
 
-                            //  Image.network(
-                            //  imgpath+item.brdLogo,
-                            //   fit: BoxFit.contain,
-                            //   width: double.infinity,
-                            // ),
+                                  //  Image.network(
+                                  //  imgpath+item.brdLogo,
+                                  //   fit: BoxFit.contain,
+                                  //   width: double.infinity,
+                                  // ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -298,7 +456,6 @@ class _HomeState extends State<Home> {
           }
         });
   }
-
   Widget topDeals() {
     return FutureBuilder(
         future: apiService.productlistall(),

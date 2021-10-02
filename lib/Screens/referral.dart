@@ -356,7 +356,7 @@ class _ReferralState extends State<Referral> {
                           'Redeem',
                             textScaleFactor: 1,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),

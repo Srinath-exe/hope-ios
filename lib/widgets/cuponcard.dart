@@ -41,10 +41,12 @@ class _CuponRedeemState extends State<CuponRedeem> {
                   child: Center(
                     child: RotatedBox(
                       quarterTurns: -1,
-                      child: Text('${widget.coupon.cpnName}',
+                      child: Text(
+                           '${widget.coupon.cpnName}',
                         textScaleFactor: 1,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 15,
                               color: Colors.white,
                               fontWeight: FontWeight.w400)),
                     ),

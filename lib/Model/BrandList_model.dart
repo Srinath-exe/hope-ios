@@ -16,6 +16,7 @@ class GetBrandList {
         this.brdLogo,
         this.brdStatus,
         this.brdBrandMapcode,
+        this.instalink,
     });
 
     String brdId;
@@ -24,6 +25,7 @@ class GetBrandList {
     String brdLogo;
     String brdStatus;
     String brdBrandMapcode;
+    String instalink;
 
     factory GetBrandList.fromJson(Map<String, dynamic> json) => GetBrandList(
         brdId: json["brd_id"],
@@ -32,6 +34,7 @@ class GetBrandList {
         brdLogo: json["brd_logo"],
         brdStatus: json["brd_status"],
         brdBrandMapcode: json["brd_BrandMAPCODE"],
+        instalink: json["instalink"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -41,5 +44,6 @@ class GetBrandList {
         "brd_logo": brdLogo,
         "brd_status": brdStatus,
         "brd_BrandMAPCODE": brdBrandMapcode,
+        "instalink": instalink,
     };
 }

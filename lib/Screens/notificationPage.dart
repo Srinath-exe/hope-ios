@@ -105,15 +105,96 @@ class _NotificationPageState extends State<NotificationPage> {
   
   }
 
+  // Widget notify(GetNotificationUserWise getNotificationUserWise) {
+  //
+  //   return Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: Container(
+  //         width: MediaQuery.of(context).size.width,
+  //         decoration: BoxDecoration(
+  //           border: Border.all(color: Color(0xff81BFCA), width: 0.1),
+  //         ),
+  //         child: Container(
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //             children: [
+  //               //  Image.network(url + getNotificationUserWise.msgBnrimg),
+  //               Container(
+  //                 height: MediaQuery.of(context).size.height * 0.25,
+  //                 width: MediaQuery.of(context).size.width,
+  //                 decoration: BoxDecoration(
+  //
+  //                     image: DecorationImage(
+  //                         image:
+  //                             NetworkImage(imgpath+getNotificationUserWise.msgBnrimg),
+  //                             fit:BoxFit.fill
+  //                 )),
+  //               ),
+  //               Padding(
+  //                 padding: const EdgeInsets.symmetric(vertical: 5.0),
+  //                 child: Container(
+  //                   child: Row(
+  //                     mainAxisAlignment: MainAxisAlignment.start,
+  //                     children: [
+  //                       Container(
+  //                     width:MediaQuery.of(context).size.width*0.9,
+  //                         child: Text(
+  //                           getNotificationUserWise.msgSubject,
+  //                             textScaleFactor: 1,
+  //                           style: TextStyle(
+  //                             fontSize: 18,
+  //                             color: Colors.black,
+  //                             fontWeight: FontWeight.w500,
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //               ),
+  //               //255222863221
+  //
+  //               Padding(
+  //                 padding: const EdgeInsets.symmetric(vertical: 5.0),
+  //                 child: Container(
+  //                   child: Row(
+  //                     mainAxisAlignment: MainAxisAlignment.start,
+  //                     children: [
+  //                       Container(
+  //                         width: MediaQuery.of(context).size.width * 0.9,
+  //                         child: Text(
+  //                           getNotificationUserWise.msgMessage,
+  //                             textScaleFactor: 1,
+  //                           style: TextStyle(
+  //                             fontSize: 13,
+  //                             color: Colors.grey[600],
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //               ),
+  //               Divider(
+  //                 thickness: 3,
+  //                 indent: 50,
+  //                 endIndent: 50,color: Colors.yellow[900],
+  //               )
+  //             ],
+  //           ),
+  //         ),
+  //       ));
+  // }
   Widget notify(GetNotificationUserWise getNotificationUserWise) {
-    
+
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             border: Border.all(color: Color(0xff81BFCA), width: 0.1),
           ),
+          padding:EdgeInsets.all(8),
           child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -123,24 +204,27 @@ class _NotificationPageState extends State<NotificationPage> {
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                       
+
                       image: DecorationImage(
                           image:
-                              NetworkImage(imgpath+getNotificationUserWise.msgBnrimg),
-                              fit:BoxFit.fill
-                  )),
+                          NetworkImage(imgpath+getNotificationUserWise.msgBnrimg),
+                          fit:BoxFit.fill
+                      )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Container(
+                    width: MediaQuery.of(context).size.width-30,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                      width:MediaQuery.of(context).size.width*0.9,
+                          width: MediaQuery.of(context).size.width*0.8,
                           child: Text(
-                            getNotificationUserWise.msgSubject,
-                              textScaleFactor: 1,
+                            "${getNotificationUserWise.msgSubject}",
+                            textScaleFactor: 1,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -161,10 +245,10 @@ class _NotificationPageState extends State<NotificationPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
+                          width: MediaQuery.of(context).size.width * 0.8,
                           child: Text(
-                            getNotificationUserWise.msgMessage,
-                              textScaleFactor: 1,
+                            "${getNotificationUserWise.msgMessage}",
+                            textScaleFactor: 1,
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey[600],

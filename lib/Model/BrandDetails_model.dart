@@ -28,8 +28,8 @@ class GetBrandDetails {
     String brdLogo;
     String brdStatus;
     String brdBrandMapcode;
-    DateTime brdCreatedAt;
-    DateTime brdUpdatedAt;
+    String brdCreatedAt;
+    String brdUpdatedAt;
 
     factory GetBrandDetails.fromJson(Map<String, dynamic> json) => GetBrandDetails(
         slno: json["slno"],
@@ -39,8 +39,8 @@ class GetBrandDetails {
         brdLogo: json["brd_logo"],
         brdStatus: json["brd_status"],
         brdBrandMapcode: json["brd_BrandMAPCODE"],
-        brdCreatedAt: DateTime.parse(json["brd_createdAt"]),
-        brdUpdatedAt: DateTime.parse(json["brd_updatedAt"]),
+        brdCreatedAt: json["brd_createdAt"],
+        brdUpdatedAt: json["brd_updatedAt"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -51,7 +51,7 @@ class GetBrandDetails {
         "brd_logo": brdLogo,
         "brd_status": brdStatus,
         "brd_BrandMAPCODE": brdBrandMapcode,
-        "brd_createdAt": brdCreatedAt.toIso8601String(),
-        "brd_updatedAt": brdUpdatedAt.toIso8601String(),
+        "brd_createdAt": brdCreatedAt,
+        "brd_updatedAt": brdUpdatedAt,
     };
 }
