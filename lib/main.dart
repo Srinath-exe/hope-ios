@@ -72,6 +72,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    _getToken();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hope Point',
