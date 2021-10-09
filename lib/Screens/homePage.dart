@@ -1,3 +1,6 @@
+
+import 'dart:developer';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -24,8 +27,10 @@ class _HomePageState extends State<HomePage> {
         await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       RemoteNotification notification = initialMessage.notification;
-      AndroidNotification android = initialMessage.notification?.android;
-      if (notification != null && android != null) {
+      AppleNotification appleNotification = initialMessage.notification?.apple;
+      if (notification != null && appleNotification != null) {
+          log("background notification receved");
+
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => NotificationPage()));
       }

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hopepoints/Screens/homePage.dart';
 import 'package:hopepoints/Screens/login.dart';
+import 'package:hopepoints/utils/pushNotificationService.dart';
 import 'package:hopepoints/utils/sharedPrefs.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,6 +40,13 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+
+  );
+
+  print('User granted permission: ${settings.authorizationStatus}');
   await sharedPrefs.init();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
@@ -69,9 +77,13 @@ class _MyAppState extends State<MyApp> {
     _getToken();
     super.initState();
   }
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+
 
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
     _getToken();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
